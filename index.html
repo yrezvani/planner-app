@@ -9,14 +9,13 @@
       rel="stylesheet"
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/45e27bebf9.js" crossorigin="anonymous"></script>
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Work Day Scheduler</title>
   </head>
@@ -29,49 +28,95 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
-      <div class="time-block mt-4">
-        <div class="hour">9am</div>
-        <div class="row present">
-          <textarea name="task" id="task" cols="30" rows="3">
-project name</textarea
-          >
+      <div class="time-block">
+        <div class="hour" id="task1-hour">9am</div>
+        <div class="row present" id="task-container">
+          <textarea name="task" id="task task1" cols="30" rows="3">project name</textarea>
         </div>
-        <div class="save">skdjfhsldk</div>
+        <div class="save">
+          <i class="fa-regular fa-floppy-disk fa-2xl"></i>
+        </div>
       </div>
-      <!-- <table class="table mt-4">
-        <tbody>
-          <tr class="py-3">
-            <td scope="row" class="text-center">Default</td>
-          </tr>
-          <tr class="table-primary">
-            <td scope="row">Primary</td>
-          </tr>
-          <tr class="table-secondary">
-            <td scope="row">Secondary</td>
-          </tr>
-          <tr class="table-success">
-            <td scope="row">Success</td>
-          </tr>
-          <tr class="table-danger">
-            <td scope="row">Danger</td>
-          </tr>
-          <tr class="table-warning">
-            <td scope="row">Warning</td>
-          </tr>
-          <tr class="table-info">
-            <td scope="row">Info</td>
-          </tr>
-          <tr class="table-light">
-            <td scope="row">Light</td>
-          </tr>
-          <tr class="table-dark">
-            <td scope="row">Dark</td>
-          </tr>
-        </tbody>
-      </table> -->
+      <div class="time-block mt-1">
+        <div class="hour" id="">10am</div>
+        <div class="row present">
+          <textarea name="task" id="task" cols="30" rows="3">project name</textarea>
+        </div>
+        <div class="save">
+          <i class="fa-regular fa-floppy-disk fa-2xl"></i>
+        </div>
+      </div>
+      <div class="time-block mt-4">
+        <div class="hour">11am</div>
+        <div class="row present">
+          <textarea name="task" id="task" cols="30" rows="3">project name</textarea>
+        </div>
+        <div class="save">
+          <i class="fa-regular fa-floppy-disk fa-2xl"></i>
+        </div>
+      </div>
+      <div class="time-block mt-4">
+        <div class="hour">12pm</div>
+        <div class="row present">
+          <textarea name="task" id="task" cols="30" rows="3">project name</textarea>
+        </div>
+        <div class="save">
+          <i class="fa-regular fa-floppy-disk fa-2xl"></i>
+        </div>
+      </div>
+      <div class="time-block mt-4">
+        <div class="hour">1pm</div>
+        <div class="row present">
+          <textarea name="task" id="task" cols="30" rows="3">project name</textarea>
+        </div>
+        <div class="save">
+          <i class="fa-regular fa-floppy-disk fa-2xl"></i>
+        </div>
+      </div>
+      <div class="time-block mt-4">
+        <div class="hour">2pm</div>
+        <div class="row present">
+          <textarea name="task" id="task" cols="30" rows="3">project name</textarea>
+        </div>
+        <div class="save">
+          <i class="fa-regular fa-floppy-disk fa-2xl"></i>
+        </div>
+      </div>
+      <div class="time-block mt-4">
+        <div class="hour">3pm</div>
+        <div class="row present">
+          <textarea name="task" id="task" cols="30" rows="3">project name</textarea>
+        </div>
+        <div class="save">
+          <i class="fa-regular fa-floppy-disk fa-2xl"></i>
+        </div>
+      </div>
+      <div class="time-block mt-4">
+        <div class="hour">4pm</div>
+        <div class="row present">
+          <textarea name="task" id="task" cols="30" rows="3">project name</textarea>
+        </div>
+        <div class="save">
+          <i class="fa-regular fa-floppy-disk fa-2xl"></i>
+        </div>
+      </div>
+      <div class="time-block mt-4">
+        <div class="hour">5pm</div>
+        <div class="row present">
+          <textarea name="task" id="task" cols="30" rows="3">project name</textarea>
+        </div>
+        <div class="save">
+          <i class="fa-regular fa-floppy-disk fa-2xl"></i>
+        </div>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/advancedFormat.js"></script>
+    <!-- <script>
+      dayjs.extend(window.dayjs_plugin_utc);
+    </script> -->
+    <script src="./assets/script/script.js"></script>
   </body>
 </html>
