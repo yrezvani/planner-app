@@ -37,6 +37,24 @@ $(document).ready(function () {
         rowDiv.toggleClass('future').removeClass('past present');
       }
     }
+
+    const saveTask = function (hour, task) {
+      let savedTasks = JSON.parse(localStorage.getItem('savedTasks')) || [];
+
+      // Check if the hour already exists in saved tasks
+      const existingTaskIndex = savedTasks.findIndex((savedTask) => savedTask.hour === hour);
+
+      if (existingTaskIndex !== -1) {
+        // Update the task if the hour already exists
+        savedTasks[existingTaskIndex].task = task;
+      } else {
+        // Add a new task if the hour doesn't exist
+        savedTasks.push({ hour, task });
+      }
+
+      // Save the updated tasks array to local storage
+      localStorage.setItem('savedTasks', JSON.stringify(savedTasks));
+    };
   };
 
   render();
