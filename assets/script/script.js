@@ -7,6 +7,7 @@ $(document).ready(function () {
     return { hour, task };
   };
 
+  // render timeblocks upon loading the page and style based on time
   const render = function () {
     const container = $('.container');
     container.html('');
@@ -20,15 +21,13 @@ $(document).ready(function () {
       const hourDiv = $('<div>').addClass('hour').text(hour);
       const rowDiv = $('<div>').addClass('row');
       const textarea = $('<textarea>').attr('name', 'task').attr('cols', '30').attr('rows', '3');
-      const saveDiv = $('<div>').addClass('save').html('<i class="fa-regular fa-floppy-disk fa-2xl"></i>');
+      const saveDiv = $('<div>').addClass('save saveBtn').html('<i class="fa-regular fa-floppy-disk fa-xl"></i>');
 
       rowDiv.append(textarea);
       timeBlock.append(hourDiv, rowDiv, saveDiv);
 
-      // Append the time block to the container
       container.append(timeBlock);
 
-      // styling based on current time
       if (i < currentTime) {
         rowDiv.toggleClass('past').removeClass('present future');
       } else if (i === currentTime) {
@@ -38,24 +37,41 @@ $(document).ready(function () {
       }
     }
 
-    const saveTask = function (hour, task) {
-      let savedTasks = JSON.parse(localStorage.getItem('savedTasks')) || [];
+    // retrieving previously saved timeblocks and rendering them
+    const savedTasks = JSON.parse(localStorage.getItem('savedTasks')) || [];
 
-      // Check if the hour already exists in saved tasks
-      const existingTaskIndex = savedTasks.findIndex((savedTask) => savedTask.hour === hour);
-
-      if (existingTaskIndex !== -1) {
-        // Update the task if the hour already exists
-        savedTasks[existingTaskIndex].task = task;
-      } else {
-        // Add a new task if the hour doesn't exist
-        savedTasks.push({ hour, task });
-      }
-
-      // Save the updated tasks array to local storage
-      localStorage.setItem('savedTasks', JSON.stringify(savedTasks));
-    };
+    savedTasks.forEach((savedTask) => {
+      const hour = savedTask.hour;
+      const task = savedTask.task;
+      const textarea = $(`.container .hour:contains(${hour})`).siblings('.row').find('textarea');
+      textarea.val(task);
+    });
   };
 
   render();
+
+  const saveTask = function (hour, task) {
+    let savedTasks = JSON.parse(localStorage.getItem('savedTasks')) || [];
+
+    // Check if the hour already exists in saved tasks
+    const existingTaskIndex = savedTasks.findIndex((savedTask) => savedTask.hour === hour);
+
+    if (existingTaskIndex !== -1) {
+      // Update the task if the hour already exists
+      savedTasks[existingTaskIndex].task = task;
+    } else {
+      // Add a new task if the hour doesn't exist
+      savedTasks.push({ hour, task });
+    }
+
+    // Save the updated tasks to local storage
+    localStorage.setItem('savedTasks', JSON.stringify(savedTasks));
+  };
+
+  // save event listener
+  $('.container').on('click', '.save', function () {
+    const hour = $(this).siblings('.hour').text(); // Get the hour text
+    const task = $(this).siblings('.row').find('textarea').val(); // Get the task content
+    saveTask(hour, task);
+  });
 });
